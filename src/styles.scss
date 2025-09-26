@@ -87,20 +87,6 @@ body {
   background: var(--white);
 }
 
-/* Status Bar Styles */
-.status-bar {
-  height: 44px;
-  background: var(--white);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 var(--spacing-md);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  color: var(--black);
-  position: relative;
-  z-index: 10;
-}
 
 /* Common Button Styles */
 .btn {

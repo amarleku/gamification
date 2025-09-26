@@ -1,0 +1,66 @@
+<div class="signup-container">
+  <!-- Navigation Bar -->
+  <app-nav-bar 
+    title="New Account" 
+    (onBackClick)="onBackClick()">
+  </app-nav-bar>
+
+  <!-- Main Content -->
+  <div class="signup-content">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup-form">
+      <!-- Full Name Input -->
+      <app-custom-input
+        label="Full name"
+        placeholder="John Doe"
+        type="text"
+        formControlName="fullName"
+        [errorMessage]="fullNameError">
+      </app-custom-input>
+
+      <!-- Email Input -->
+      <app-custom-input
+        label="Email or Mobile Number"
+        placeholder="example@example.com"
+        type="email"
+        formControlName="email"
+        [errorMessage]="emailError">
+      </app-custom-input>
+
+      <!-- Mobile Number Input -->
+      <app-custom-input
+        label="Mobile Number"
+        placeholder="+123 456 789"
+        type="tel"
+        formControlName="mobileNumber"
+        [errorMessage]="mobileError">
+      </app-custom-input>
+
+      <!-- Date of Birth Input -->
+      <app-custom-input
+        label="Date of birth"
+        placeholder="DD / MM / YYYY"
+        type="date"
+        formControlName="dateOfBirth"
+        [showIcon]="true"
+        iconType="calendar"
+        [errorMessage]="dateOfBirthError">
+      </app-custom-input>
+
+      <!-- Sign Up Button -->
+      <app-custom-button
+        [variant]="'primary'"
+        [disabled]="isLoading"
+        type="submit">
+        {{ isLoading ? 'Creating Account...' : 'Sign Up' }}
+      </app-custom-button>
+    </form>
+
+    <!-- Divider -->
+    <div class="divider">
+      <span class="divider-text">OR</span>
+    </div>
+
+    <!-- Social Login -->
+    <app-social-login (socialLogin)="onSocialLogin($event)"></app-social-login>
+  </div>
+</div>

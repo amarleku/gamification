@@ -1,0 +1,50 @@
+.signup-container {
+  min-height: 100vh;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-content {
+  flex: 1;
+  padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: var(--spacing-xl) 0;
+  
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gray-300);
+  }
+  
+  .divider-text {
+    padding: 0 var(--spacing-md);
+    font-size: var(--font-size-sm);
+    color: var(--gray-500);
+    background: var(--white);
+    font-weight: 500;
+  }
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .signup-content {
+    padding: var(--spacing-3xl) var(--spacing-2xl) var(--spacing-xl);
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}

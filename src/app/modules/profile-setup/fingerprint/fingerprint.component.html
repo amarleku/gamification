@@ -1,0 +1,89 @@
+<div class="fingerprint-container">
+  <!-- Navigation Bar -->
+  <app-nav-bar 
+    title="Set Your Fingerprint" 
+    (onBackClick)="onBackClick()">
+  </app-nav-bar>
+
+  <!-- Main Content -->
+  <div class="fingerprint-content">
+    <div class="fingerprint-icon-container">
+      <!-- Fingerprint Icon -->
+      <div class="fingerprint-icon" [class.scanning]="isScanning" [class.completed]="isCompleted">
+        <div class="fingerprint-lines">
+          <div class="line line-1"></div>
+          <div class="line line-2"></div>
+          <div class="line line-3"></div>
+          <div class="line line-4"></div>
+          <div class="line line-5"></div>
+          <div class="line line-6"></div>
+          <div class="line line-7"></div>
+          <div class="line line-8"></div>
+        </div>
+        
+        <!-- Progress Ring -->
+        <div *ngIf="isScanning" class="progress-ring">
+          <svg class="progress-circle" width="120" height="120">
+            <circle
+              cx="60"
+              cy="60"
+              r="50"
+              fill="none"
+              stroke="var(--gray-200)"
+              stroke-width="4"
+            />
+            <circle
+              cx="60"
+              cy="60"
+              r="50"
+              fill="none"
+              stroke="var(--primary-pink)"
+              stroke-width="4"
+              stroke-linecap="round"
+              [style.stroke-dasharray]="314"
+              [style.stroke-dashoffset]="314 - (314 * scanProgress / 100)"
+              transform="rotate(-90 60 60)"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Description Text -->
+    <div class="description-container">
+      <h3 *ngIf="!isScanning && !isCompleted" class="description-title">
+        Place your finger on the sensor
+      </h3>
+      <h3 *ngIf="isScanning" class="description-title scanning">
+        Scanning your fingerprint...
+      </h3>
+      <h3 *ngIf="isCompleted" class="description-title completed">
+        Fingerprint registered successfully!
+      </h3>
+      
+      <p *ngIf="!isCompleted" class="description-text">
+        {{ isScanning ? 'Keep your finger steady on the sensor' : 'This will help you quickly access your account' }}
+      </p>
+      <p *ngIf="isCompleted" class="description-text">
+        You can now use your fingerprint to sign in securely
+      </p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="button-container">
+      <app-custom-button
+        [variant]="'primary'"
+        [disabled]="isScanning"
+        (onClick)="onContinue()">
+        {{ isCompleted ? 'Continue' : (isScanning ? 'Scanning...' : 'Start Scan') }}
+      </app-custom-button>
+      
+      <app-custom-button
+        [variant]="'white'"
+        [disabled]="isScanning"
+        (onClick)="onSkip()">
+        Skip
+      </app-custom-button>
+    </div>
+  </div>
+</div>
