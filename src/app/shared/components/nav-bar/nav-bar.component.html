@@ -1,0 +1,11 @@
+<div class="nav-bar">
+  <button 
+    *ngIf="showBackButton" 
+    class="nav-back"
+    (click)="onBackClick.emit()"
+    [attr.aria-label]="'Go back'">
+    ←
+  </button>
+  <h1 class="nav-title">{{ title }}</h1>
+  <div class="nav-spacer"></div>
+</div>

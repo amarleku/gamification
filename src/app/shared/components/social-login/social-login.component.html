@@ -1,0 +1,20 @@
+<div class="social-login">
+  <div 
+    class="social-icon"
+    (click)="onSocialLogin('google')"
+    [attr.aria-label]="'Login with Google'">
+    {{ getSocialIcon('google') }}
+  </div>
+  <div 
+    class="social-icon"
+    (click)="onSocialLogin('facebook')"
+    [attr.aria-label]="'Login with Facebook'">
+    {{ getSocialIcon('facebook') }}
+  </div>
+  <div 
+    class="social-icon"
+    (click)="onSocialLogin('apple')"
+    [attr.aria-label]="'Login with Apple'">
+    {{ getSocialIcon('apple') }}
+  </div>
+</div>

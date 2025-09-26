@@ -1,0 +1,43 @@
+.nav-bar {
+  background: var(--primary-pink);
+  color: var(--white);
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 10;
+  min-height: 56px;
+  
+  .nav-title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    text-align: center;
+    flex: 1;
+    margin: 0;
+  }
+  
+  .nav-back {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: var(--font-size-xl);
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    transition: background var(--transition-fast);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    &:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+  
+  .nav-spacer {
+    width: 40px; // Same width as back button to center the title
+  }
+}

@@ -1,0 +1,42 @@
+<div class="onboarding-container">
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <span>9:41</span>
+    <span>🔋 100%</span>
+  </div>
+
+  <!-- Hero Image Section -->
+  <div class="hero-section">
+    <div class="hero-image">
+      <!-- Abstract futuristic background -->
+      <div class="abstract-bg">
+        <div class="neon-line line-1"></div>
+        <div class="neon-line line-2"></div>
+        <div class="neon-line line-3"></div>
+        <div class="neon-circle circle-1"></div>
+        <div class="neon-circle circle-2"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <app-pagination 
+    [currentPage]="currentSlide + 1" 
+    [totalPages]="slides.length">
+  </app-pagination>
+
+  <!-- Content Card -->
+  <div class="content-card slide-up">
+    <h1 class="slide-title">{{ currentSlideData.title }}</h1>
+    <p class="slide-description">{{ currentSlideData.description }}</p>
+    
+    <div class="button-container">
+      <app-custom-button
+        [variant]="'secondary'"
+        [fullWidth]="true"
+        (onClick)="nextSlide()">
+        {{ currentSlideData.buttonText }}
+      </app-custom-button>
+    </div>
+  </div>
+</div>

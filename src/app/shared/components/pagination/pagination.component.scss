@@ -1,0 +1,19 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin: var(--spacing-lg) 0;
+  
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--gray-300);
+    transition: background var(--transition-fast);
+    
+    &.active {
+      background: var(--primary-pink);
+    }
+  }
+}

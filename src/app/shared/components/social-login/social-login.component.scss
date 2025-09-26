@@ -1,0 +1,30 @@
+.social-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-lg);
+  margin: var(--spacing-lg) 0;
+  
+  .social-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    background: var(--gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-size: var(--font-size-xl);
+    
+    &:hover {
+      background: var(--gray-200);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}

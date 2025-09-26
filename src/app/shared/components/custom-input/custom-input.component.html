@@ -1,0 +1,45 @@
+<div class="input-group">
+  <label *ngIf="label" [for]="inputId">{{ label }}</label>
+  <div class="input-with-icon" *ngIf="showIcon; else noIcon">
+    <input
+      [id]="inputId"
+      [type]="inputType"
+      [placeholder]="placeholder"
+      [value]="value"
+      [disabled]="disabled"
+      [required]="required"
+      (input)="onInput($event)"
+      (blur)="onBlur()"
+      (focus)="onFocus()"
+      class="input-field"
+    />
+    <span 
+      *ngIf="iconType === 'password'"
+      class="input-icon"
+      (click)="togglePasswordVisibility()">
+      {{ showPassword ? '👁️' : '👁️‍🗨️' }}
+    </span>
+    <span 
+      *ngIf="iconType === 'calendar'"
+      class="input-icon">
+      📅
+    </span>
+  </div>
+  <ng-template #noIcon>
+    <input
+      [id]="inputId"
+      [type]="inputType"
+      [placeholder]="placeholder"
+      [value]="value"
+      [disabled]="disabled"
+      [required]="required"
+      (input)="onInput($event)"
+      (blur)="onBlur()"
+      (focus)="onFocus()"
+      class="input-field"
+    />
+  </ng-template>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+</div>

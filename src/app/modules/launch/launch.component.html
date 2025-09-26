@@ -1,0 +1,26 @@
+<div class="launch-container">
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <span>9:41</span>
+    <span>🔋 100%</span>
+  </div>
+
+  <!-- Main Content -->
+  <div class="launch-content">
+    <div class="logo-container">
+      <div class="logo">
+        <div class="logo-icon">G</div>
+      </div>
+      <h1 class="app-title">Gamification</h1>
+      <p class="app-description">
+        Enhance your user's learning experience with Gamification.
+      </p>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div *ngIf="isLoading" class="loading-container">
+      <div class="loading-spinner"></div>
+      <p class="loading-text">Loading...</p>
+    </div>
+  </div>
+</div>

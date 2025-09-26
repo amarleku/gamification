@@ -1,0 +1,7 @@
+<div class="pagination">
+  <span 
+    *ngFor="let page of pages; let i = index"
+    class="dot"
+    [class.active]="i + 1 === currentPage">
+  </span>
+</div>
