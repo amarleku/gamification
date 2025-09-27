@@ -8,7 +8,7 @@
 
 .login-content {
   flex: 1;
-  padding: var(--spacing-2xl) var(--spacing-md) var(--spacing-md);
+  padding: var(--spacing-2xl) var(--spacing-sm) var(--spacing-md);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -61,7 +61,7 @@
   }
   
   .divider-text {
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-sm);
     font-size: var(--font-size-sm);
     color: var(--gray-500);
     background: var(--white);
@@ -77,9 +77,9 @@
 /* Responsive Design */
 @media (min-width: 768px) {
   .login-content {
-    padding: var(--spacing-3xl) var(--spacing-lg) var(--spacing-lg);
-    max-width: 400px;
-    margin: 0 auto;
+    padding: var(--spacing-3xl) var(--spacing-sm) var(--spacing-lg);
+    max-width: 100%;
+    margin: 0;
   }
   
   .welcome-title {
@@ -90,7 +90,7 @@
 /* Mobile specific adjustments */
 @media (max-height: 700px) {
   .login-content {
-    padding: var(--spacing-lg) var(--spacing-md) var(--spacing-sm);
+    padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-sm);
   }
   
   .welcome-title {
@@ -118,7 +118,7 @@
 /* Very small screens */
 @media (max-height: 600px) {
   .login-content {
-    padding: var(--spacing-md) var(--spacing-md) var(--spacing-xs);
+    padding: var(--spacing-md) var(--spacing-sm) var(--spacing-xs);
   }
   
   .welcome-title {

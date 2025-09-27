@@ -39,10 +39,10 @@ export class DashboardComponent implements OnInit {
   ];
 
   quickGames: Game[] = [
-    { id: '1', title: 'Bowling', image: 'assets/images/bowling.svg' },
-    { id: '2', title: 'Tic-Tac', image: 'assets/images/tic-tac.svg' },
-    { id: '3', title: 'Basketball', image: 'assets/images/basketball.svg' },
-    { id: '4', title: 'Find', image: 'assets/images/find.svg' }
+    { id: '1', title: 'Bowling', image: 'assets/images/bowling.jpg' },
+    { id: '2', title: 'Tic-Tac', image: 'assets/images/tic-tac.png' },
+    { id: '3', title: 'Basketball', image: 'assets/images/backetbakk.png' },
+    { id: '4', title: 'Find', image: 'assets/images/find.png' }
   ];
 
   quizGames: Game[] = [
@@ -70,7 +70,7 @@ export class DashboardComponent implements OnInit {
       title: 'Experience our delicious new dish',
       subtitle: '50% OFF',
       discount: '50% OFF',
-      image: 'assets/images/pizza.svg',
+      image: 'assets/images/Photo Pizza.png',
       label: 'Win By Playing A Game'
     }
   ];
@@ -113,9 +113,5 @@ export class DashboardComponent implements OnInit {
 
   onGameControllerClick(): void {
     console.log('Game controller clicked');
-  }
-
-  onBottomNavClick(navItem: string): void {
-    console.log('Bottom nav clicked:', navItem);
   }
 }

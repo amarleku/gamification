@@ -1,0 +1,11 @@
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+  <div 
+    *ngFor="let navItem of navItems" 
+    class="nav-item"
+    [class.active]="navItem.id === activeItem"
+    (click)="onNavItemClick(navItem)">
+    <span class="nav-icon">{{ navItem.icon }}</span>
+    <span class="nav-label">{{ navItem.label }}</span>
+  </div>
+</div>

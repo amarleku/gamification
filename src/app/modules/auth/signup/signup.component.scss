@@ -7,7 +7,7 @@
 
 .signup-content {
   flex: 1;
-  padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-xl);
+  padding: var(--spacing-2xl) var(--spacing-sm) var(--spacing-xl);
   display: flex;
   flex-direction: column;
 }
@@ -32,7 +32,7 @@
   }
   
   .divider-text {
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-sm);
     font-size: var(--font-size-sm);
     color: var(--gray-500);
     background: var(--white);
@@ -43,8 +43,8 @@
 /* Responsive Design */
 @media (min-width: 768px) {
   .signup-content {
-    padding: var(--spacing-3xl) var(--spacing-2xl) var(--spacing-xl);
-    max-width: 400px;
-    margin: 0 auto;
+    padding: var(--spacing-3xl) var(--spacing-sm) var(--spacing-xl);
+    max-width: 100%;
+    margin: 0;
   }
 }

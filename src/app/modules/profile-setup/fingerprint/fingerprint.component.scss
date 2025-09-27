@@ -7,7 +7,7 @@
 
 .fingerprint-content {
   flex: 1;
-  padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-xl);
+  padding: var(--spacing-2xl) var(--spacing-sm) var(--spacing-xl);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -144,7 +144,7 @@
 /* Responsive Design */
 @media (min-width: 768px) {
   .fingerprint-content {
-    padding: var(--spacing-3xl) var(--spacing-2xl) var(--spacing-xl);
+    padding: var(--spacing-3xl) var(--spacing-sm) var(--spacing-xl);
   }
   
   .fingerprint-icon {

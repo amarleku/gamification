@@ -1,1 +1,7 @@
 <router-outlet></router-outlet>
+
+<!-- Global Bottom Navigation -->
+<app-bottom-navigation 
+  [activeItem]="getCurrentActiveItem()"
+  (navItemClick)="onBottomNavClick($event)">
+</app-bottom-navigation>

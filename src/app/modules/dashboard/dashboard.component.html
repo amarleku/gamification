@@ -130,23 +130,4 @@
       </div>
     </div>
   </div>
-
-  <!-- Bottom Navigation -->
-  <div class="bottom-nav">
-    <div 
-      *ngFor="let navItem of ['home', 'gift', 'heart', 'list', 'headphones']" 
-      class="nav-item"
-      [class.active]="navItem === 'home'"
-      (click)="onBottomNavClick(navItem)">
-      <span class="nav-icon">
-        <ng-container [ngSwitch]="navItem">
-          <span *ngSwitchCase="'home'">🏠</span>
-          <span *ngSwitchCase="'gift'">🎁</span>
-          <span *ngSwitchCase="'heart'">❤️</span>
-          <span *ngSwitchCase="'list'">📋</span>
-          <span *ngSwitchCase="'headphones'">🎧</span>
-        </ng-container>
-      </span>
-    </div>
-  </div>
 </div>
