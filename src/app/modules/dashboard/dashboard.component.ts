@@ -33,7 +33,12 @@ export class DashboardComponent implements OnInit {
   // Touch/swipe properties
   touchStartX = 0;
   touchEndX = 0;
-  minSwipeDistance = 50; // Minimum distance for a swipe
+  minSwipeDistance = 30; // Minimum distance for a swipe
+  
+  // Games scroll properties
+  gamesScrollStartX = 0;
+  gamesScrollEndX = 0;
+  gamesScrollElement: HTMLElement | null = null;
 
   categories: Category[] = [
     { id: '1', name: 'Restaurant', icon: '🍽️' },
@@ -83,7 +88,7 @@ export class DashboardComponent implements OnInit {
       title: 'Special Gaming Tournament',
       subtitle: '30% OFF',
       discount: '30% OFF',
-      image: 'aassets/images/Photo Pizza.png',
+      image: 'assets/images/Photo Pizza.png',
       label: 'Join Now'
     },
     {
@@ -105,7 +110,7 @@ export class DashboardComponent implements OnInit {
   ];
 
   currentBannerIndex = 0;
-  totalBanners = 5;
+  totalBanners = 4;
 
   constructor() { }
 
@@ -114,6 +119,11 @@ export class DashboardComponent implements OnInit {
     setInterval(() => {
       this.nextBanner();
     }, 5000);
+    
+    // Get games scroll element reference
+    setTimeout(() => {
+      this.gamesScrollElement = document.querySelector('.games-scroll');
+    }, 100);
   }
 
   onCategoryClick(category: Category): void {
@@ -147,32 +157,88 @@ export class DashboardComponent implements OnInit {
 
   // Touch event handlers for swipe functionality
   onTouchStart(event: TouchEvent): void {
+    console.log('Touch start');
     this.touchStartX = event.touches[0].clientX;
-    // Prevent default to avoid scrolling while swiping
-    event.preventDefault();
   }
 
   onTouchMove(event: TouchEvent): void {
     // Prevent scrolling during horizontal swipe
-    if (Math.abs(event.touches[0].clientX - this.touchStartX) > 10) {
+    const touchX = event.touches[0].clientX;
+    const diffX = Math.abs(touchX - this.touchStartX);
+    
+    if (diffX > 10) {
       event.preventDefault();
     }
   }
 
   onTouchEnd(event: TouchEvent): void {
+    console.log('Touch end');
     this.touchEndX = event.changedTouches[0].clientX;
     this.handleSwipe();
+  }
+
+  // Mouse events for desktop testing
+  onMouseDown(event: MouseEvent): void {
+    console.log('Mouse down');
+    this.touchStartX = event.clientX;
+  }
+
+  onMouseUp(event: MouseEvent): void {
+    console.log('Mouse up');
+    this.touchEndX = event.clientX;
+    this.handleSwipe();
+  }
+
+  // Games scroll touch events
+  onGamesTouchStart(event: TouchEvent): void {
+    this.gamesScrollStartX = event.touches[0].clientX;
+  }
+
+  onGamesTouchMove(event: TouchEvent): void {
+    if (this.gamesScrollElement) {
+      const touchX = event.touches[0].clientX;
+      const diffX = this.gamesScrollStartX - touchX;
+      const currentScroll = this.gamesScrollElement.scrollLeft;
+      this.gamesScrollElement.scrollLeft = currentScroll + diffX;
+      this.gamesScrollStartX = touchX;
+    }
+  }
+
+  onGamesTouchEnd(event: TouchEvent): void {
+    // Optional: Add momentum scrolling or snap behavior here
+  }
+
+  // Games scroll mouse events for desktop
+  onGamesMouseDown(event: MouseEvent): void {
+    this.gamesScrollStartX = event.clientX;
+  }
+
+  onGamesMouseMove(event: MouseEvent): void {
+    if (this.gamesScrollElement && event.buttons === 1) { // Left mouse button pressed
+      const diffX = this.gamesScrollStartX - event.clientX;
+      const currentScroll = this.gamesScrollElement.scrollLeft;
+      this.gamesScrollElement.scrollLeft = currentScroll + diffX;
+      this.gamesScrollStartX = event.clientX;
+    }
+  }
+
+  onGamesMouseUp(event: MouseEvent): void {
+    // Mouse up - stop scrolling
   }
 
   handleSwipe(): void {
     const swipeDistance = this.touchEndX - this.touchStartX;
     
+    console.log('Swipe detected:', swipeDistance, 'Min distance:', this.minSwipeDistance);
+    
     if (Math.abs(swipeDistance) > this.minSwipeDistance) {
       if (swipeDistance > 0) {
         // Swipe right - go to previous banner
+        console.log('Swipe right - previous banner');
         this.previousBanner();
       } else {
         // Swipe left - go to next banner
+        console.log('Swipe left - next banner');
         this.nextBanner();
       }
     }

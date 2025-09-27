@@ -205,6 +205,15 @@
   gap: var(--spacing-md);
   overflow-x: auto;
   padding-bottom: var(--spacing-sm);
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  scroll-behavior: smooth;
+  
+  &:active {
+    cursor: grabbing;
+  }
   
   &::-webkit-scrollbar {
     height: 4px;

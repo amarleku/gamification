@@ -57,7 +57,13 @@
         </button>
       </div>
       
-      <div class="games-scroll">
+      <div class="games-scroll"
+           (touchstart)="onGamesTouchStart($event)"
+           (touchmove)="onGamesTouchMove($event)"
+           (touchend)="onGamesTouchEnd($event)"
+           (mousedown)="onGamesMouseDown($event)"
+           (mousemove)="onGamesMouseMove($event)"
+           (mouseup)="onGamesMouseUp($event)">
         <div 
           *ngFor="let game of quickGames" 
           class="game-card"
@@ -77,7 +83,9 @@
         (click)="onBannerClick(banners[currentBannerIndex])"
         (touchstart)="onTouchStart($event)"
         (touchmove)="onTouchMove($event)"
-        (touchend)="onTouchEnd($event)">
+        (touchend)="onTouchEnd($event)"
+        (mousedown)="onMouseDown($event)"
+        (mouseup)="onMouseUp($event)">
         <div class="banner-content">
           <div class="banner-text">
             <h3 class="banner-title">{{ banners[currentBannerIndex].title }}</h3>
@@ -111,7 +119,13 @@
         </button>
       </div>
       
-      <div class="games-scroll">
+      <div class="games-scroll"
+           (touchstart)="onGamesTouchStart($event)"
+           (touchmove)="onGamesTouchMove($event)"
+           (touchend)="onGamesTouchEnd($event)"
+           (mousedown)="onGamesMouseDown($event)"
+           (mousemove)="onGamesMouseMove($event)"
+           (mouseup)="onGamesMouseUp($event)">
         <div 
           *ngFor="let game of quizGames" 
           class="quiz-game-card"
