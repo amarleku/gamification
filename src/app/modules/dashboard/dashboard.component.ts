@@ -30,6 +30,11 @@ interface Banner {
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  // Touch/swipe properties
+  touchStartX = 0;
+  touchEndX = 0;
+  minSwipeDistance = 50; // Minimum distance for a swipe
+
   categories: Category[] = [
     { id: '1', name: 'Restaurant', icon: '🍽️' },
     { id: '2', name: 'Lounge&Bars', icon: '🍸' },
@@ -72,15 +77,43 @@ export class DashboardComponent implements OnInit {
       discount: '50% OFF',
       image: 'assets/images/Photo Pizza.png',
       label: 'Win By Playing A Game'
+    },
+    {
+      id: '2',
+      title: 'Special Gaming Tournament',
+      subtitle: '30% OFF',
+      discount: '30% OFF',
+      image: 'aassets/images/Photo Pizza.png',
+      label: 'Join Now'
+    },
+    {
+      id: '3',
+      title: 'New Music Quiz Available',
+      subtitle: 'FREE',
+      discount: 'FREE',
+      image: 'assets/images/Photo Pizza.png',
+      label: 'Play Now'
+    },
+    {
+      id: '4',
+      title: 'Astrology Challenge',
+      subtitle: '25% OFF',
+      discount: '25% OFF',
+      image: 'assets/images/Photo Pizza.png',
+      label: 'Start Quiz'
     }
   ];
 
-  currentBannerIndex = 1;
+  currentBannerIndex = 0;
   totalBanners = 5;
 
   constructor() { }
 
   ngOnInit(): void {
+    // Auto-rotate banners every 5 seconds
+    setInterval(() => {
+      this.nextBanner();
+    }, 5000);
   }
 
   onCategoryClick(category: Category): void {
@@ -97,6 +130,52 @@ export class DashboardComponent implements OnInit {
 
   onBannerClick(banner: Banner): void {
     console.log('Banner clicked:', banner);
+    // Add navigation logic here if needed
+  }
+
+  onPaginationClick(index: number): void {
+    this.currentBannerIndex = index;
+  }
+
+  nextBanner(): void {
+    this.currentBannerIndex = (this.currentBannerIndex + 1) % this.totalBanners;
+  }
+
+  previousBanner(): void {
+    this.currentBannerIndex = this.currentBannerIndex === 0 ? this.totalBanners - 1 : this.currentBannerIndex - 1;
+  }
+
+  // Touch event handlers for swipe functionality
+  onTouchStart(event: TouchEvent): void {
+    this.touchStartX = event.touches[0].clientX;
+    // Prevent default to avoid scrolling while swiping
+    event.preventDefault();
+  }
+
+  onTouchMove(event: TouchEvent): void {
+    // Prevent scrolling during horizontal swipe
+    if (Math.abs(event.touches[0].clientX - this.touchStartX) > 10) {
+      event.preventDefault();
+    }
+  }
+
+  onTouchEnd(event: TouchEvent): void {
+    this.touchEndX = event.changedTouches[0].clientX;
+    this.handleSwipe();
+  }
+
+  handleSwipe(): void {
+    const swipeDistance = this.touchEndX - this.touchStartX;
+    
+    if (Math.abs(swipeDistance) > this.minSwipeDistance) {
+      if (swipeDistance > 0) {
+        // Swipe right - go to previous banner
+        this.previousBanner();
+      } else {
+        // Swipe left - go to next banner
+        this.nextBanner();
+      }
+    }
   }
 
   onSearch(): void {

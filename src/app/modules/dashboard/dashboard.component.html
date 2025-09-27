@@ -73,18 +73,19 @@
     <!-- Promotional Banner -->
     <div class="banner-section">
       <div 
-        *ngFor="let banner of banners; let i = index" 
         class="banner-card"
-        [class.active]="i === currentBannerIndex"
-        (click)="onBannerClick(banner)">
+        (click)="onBannerClick(banners[currentBannerIndex])"
+        (touchstart)="onTouchStart($event)"
+        (touchmove)="onTouchMove($event)"
+        (touchend)="onTouchEnd($event)">
         <div class="banner-content">
           <div class="banner-text">
-            <h3 class="banner-title">{{ banner.title }}</h3>
-            <div class="banner-discount">{{ banner.discount }}</div>
+            <h3 class="banner-title">{{ banners[currentBannerIndex].title }}</h3>
+            <div class="banner-discount">{{ banners[currentBannerIndex].discount }}</div>
           </div>
           <div class="banner-image">
-            <img [src]="banner.image" [alt]="banner.title" />
-            <div class="banner-label">{{ banner.label }}</div>
+            <img [src]="banners[currentBannerIndex].image" [alt]="banners[currentBannerIndex].title" />
+            <div class="banner-label">{{ banners[currentBannerIndex].label }}</div>
           </div>
         </div>
       </div>
@@ -94,7 +95,8 @@
         <div 
           *ngFor="let dot of [].constructor(totalBanners); let i = index"
           class="pagination-dot"
-          [class.active]="i === currentBannerIndex">
+          [class.active]="i === currentBannerIndex"
+          (click)="onPaginationClick(i)">
         </div>
       </div>
     </div>
