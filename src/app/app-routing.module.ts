@@ -15,6 +15,9 @@ const routes: Routes = [
   // Profile Setup
   { path: 'profile-setup', loadChildren: () => import('./modules/profile-setup/profile-setup.module').then(m => m.ProfileSetupModule) },
   
+  // Dashboard
+  { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule) },
+  
   // Default redirect
   { path: '**', redirectTo: '/launch' }
 ];

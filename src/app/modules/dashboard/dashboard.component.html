@@ -1,0 +1,152 @@
+<div class="dashboard-container">
+  <!-- Pink Header Section -->
+  <div class="header-section">
+    <!-- Search Bar and Icons -->
+    <div class="header-top">
+      <div class="search-container">
+        <input 
+          type="text" 
+          placeholder="Search" 
+          class="search-input"
+          (click)="onSearch()">
+        <div class="search-icon">🔍</div>
+      </div>
+      
+      <div class="header-icons">
+        <div class="icon-button" (click)="onGameControllerClick()">
+          <span class="icon">🎮</span>
+        </div>
+        <div class="icon-button" (click)="onNotificationClick()">
+          <span class="icon">🔔</span>
+        </div>
+        <div class="icon-button" (click)="onProfileClick()">
+          <span class="icon">👤</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Greeting Section -->
+    <div class="greeting-section">
+      <h1 class="greeting-title">Good Morning</h1>
+      <p class="greeting-subtitle">Rise And Shine! It's Gaming Time</p>
+    </div>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="main-content">
+    <!-- Category Icons Section -->
+    <div class="categories-section">
+      <div class="category-grid">
+        <div 
+          *ngFor="let category of categories" 
+          class="category-item"
+          (click)="onCategoryClick(category)">
+          <div class="category-icon">{{ category.icon }}</div>
+          <span class="category-name">{{ category.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Best Quick Games Section -->
+    <div class="games-section">
+      <div class="section-header">
+        <h2 class="section-title">Best Quick Games</h2>
+        <button class="view-all-btn" (click)="onViewAll('quick-games')">
+          View All
+          <span class="arrow">→</span>
+        </button>
+      </div>
+      
+      <div class="games-scroll">
+        <div 
+          *ngFor="let game of quickGames" 
+          class="game-card"
+          (click)="onGameClick(game)">
+          <div class="game-image">
+            <img [src]="game.image" [alt]="game.title" />
+            <div class="game-label">{{ game.title }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Promotional Banner -->
+    <div class="banner-section">
+      <div 
+        *ngFor="let banner of banners; let i = index" 
+        class="banner-card"
+        [class.active]="i === currentBannerIndex"
+        (click)="onBannerClick(banner)">
+        <div class="banner-content">
+          <div class="banner-text">
+            <h3 class="banner-title">{{ banner.title }}</h3>
+            <div class="banner-discount">{{ banner.discount }}</div>
+          </div>
+          <div class="banner-image">
+            <img [src]="banner.image" [alt]="banner.title" />
+            <div class="banner-label">{{ banner.label }}</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Pagination Dots -->
+      <div class="banner-pagination">
+        <div 
+          *ngFor="let dot of [].constructor(totalBanners); let i = index"
+          class="pagination-dot"
+          [class.active]="i === currentBannerIndex">
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiz Games Section -->
+    <div class="games-section">
+      <div class="section-header">
+        <h2 class="section-title">Quiz Games</h2>
+        <button class="view-all-btn" (click)="onViewAll('quiz-games')">
+          View All
+          <span class="arrow">→</span>
+        </button>
+      </div>
+      
+      <div class="games-scroll">
+        <div 
+          *ngFor="let game of quizGames" 
+          class="quiz-game-card"
+          (click)="onGameClick(game)">
+          <div class="quiz-game-image">
+            <img [src]="game.image" [alt]="game.title" />
+            <div class="game-overlay">
+              <div class="game-rating">
+                <span class="rating">{{ game.rating }}</span>
+                <span class="star">⭐</span>
+                <span class="heart" [class.favorite]="game.isFavorite">❤️</span>
+              </div>
+              <div class="game-title">{{ game.title }}</div>
+              <div class="game-price">{{ game.price }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <div 
+      *ngFor="let navItem of ['home', 'gift', 'heart', 'list', 'headphones']" 
+      class="nav-item"
+      [class.active]="navItem === 'home'"
+      (click)="onBottomNavClick(navItem)">
+      <span class="nav-icon">
+        <ng-container [ngSwitch]="navItem">
+          <span *ngSwitchCase="'home'">🏠</span>
+          <span *ngSwitchCase="'gift'">🎁</span>
+          <span *ngSwitchCase="'heart'">❤️</span>
+          <span *ngSwitchCase="'list'">📋</span>
+          <span *ngSwitchCase="'headphones'">🎧</span>
+        </ng-container>
+      </span>
+    </div>
+  </div>
+</div>
