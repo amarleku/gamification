@@ -1,26 +1,18 @@
 <div class="onboarding-container">
-  <!-- Hero Image Section -->
   <div class="hero-section">
+    <a class="skip-link" (click)="skipOnboarding()">Skip ></a>
     <div class="hero-image">
-      <!-- Abstract futuristic background -->
-      <div class="abstract-bg">
-        <div class="neon-line line-1"></div>
-        <div class="neon-line line-2"></div>
-        <div class="neon-line line-3"></div>
-        <div class="neon-circle circle-1"></div>
-        <div class="neon-circle circle-2"></div>
-      </div>
+      <img src="assets/images/onboard.png" alt="Onboarding illustration" class="onboard-image">
     </div>
   </div>
 
-  <!-- Pagination -->
   <app-pagination 
     [currentPage]="currentSlide + 1" 
     [totalPages]="slides.length">
   </app-pagination>
 
-  <!-- Content Card -->
   <div class="content-card slide-up">
+    <div class="slide-icon">{{ currentSlideData.icon }}</div>
     <h1 class="slide-title">{{ currentSlideData.title }}</h1>
     <p class="slide-description">{{ currentSlideData.description }}</p>
     

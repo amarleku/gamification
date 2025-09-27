@@ -3,17 +3,17 @@
   justify-content: center;
   align-items: center;
   gap: var(--spacing-sm);
-  margin: var(--spacing-lg) 0;
+  margin: var(--spacing-sm) 0;
   
   .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: var(--radius-full);
+    width: 20px;
+    height: 3px;
+    border-radius: 2px;
     background: var(--gray-300);
     transition: background var(--transition-fast);
     
     &.active {
-      background: var(--primary-pink);
+      background: var(--primary-blue);
     }
   }
 }

@@ -14,12 +14,4 @@ export class SocialLoginComponent {
     this.socialLogin.emit(provider);
   }
 
-  getSocialIcon(provider: SocialProvider): string {
-    const icons = {
-      google: '🔍',
-      facebook: '📘',
-      apple: '🍎'
-    };
-    return icons[provider];
-  }
 }

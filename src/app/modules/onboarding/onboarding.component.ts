@@ -7,6 +7,7 @@ interface OnboardingSlide {
   description: string;
   buttonText: string;
   isLast: boolean;
+  icon: string;
 }
 
 @Component({
@@ -21,23 +22,26 @@ export class OnboardingComponent implements OnInit {
     {
       id: 1,
       title: 'Hello',
-      description: 'Be part of Gamification - the all-in-one platform for a gamified experience.',
+      description: 'Be part of Gamification - the all-in-one gaming community platform.',
       buttonText: 'Next',
-      isLast: false
+      isLast: false,
+      icon: '📄'
     },
     {
       id: 2,
       title: 'Easy Payment',
-      description: 'Make secure payments with our integrated payment system. Fast, safe, and reliable transactions.',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
       buttonText: 'Next',
-      isLast: false
+      isLast: false,
+      icon: '💳'
     },
     {
       id: 3,
       title: 'Big Awards',
-      description: 'Earn points, unlock achievements, and get rewarded for your progress. The more you engage, the more you gain!',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
       buttonText: 'Get Started',
-      isLast: true
+      isLast: true,
+      icon: '🏅'
     }
   ];
 
