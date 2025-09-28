@@ -41,7 +41,9 @@
           *ngFor="let category of categories" 
           class="category-item"
           (click)="onCategoryClick(category)">
-          <div class="category-icon">{{ category.icon }}</div>
+          <div class="category-icon">
+            <img [src]="category.icon" [alt]="category.name" />
+          </div>
           <span class="category-name">{{ category.name }}</span>
         </div>
       </div>

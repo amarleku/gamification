@@ -41,11 +41,11 @@ export class DashboardComponent implements OnInit {
   gamesScrollElement: HTMLElement | null = null;
 
   categories: Category[] = [
-    { id: '1', name: 'Restaurant', icon: '🍽️' },
-    { id: '2', name: 'Lounge&Bars', icon: '🍸' },
-    { id: '3', name: 'Fast-Food', icon: '🍔' },
-    { id: '4', name: 'Airline Agencies', icon: '✈️' },
-    { id: '5', name: 'Tech Stores', icon: '🎮' }
+    { id: '1', name: 'Restaurant', icon: 'assets/icons/resturant.png' },
+    { id: '2', name: 'Lounge&Bars', icon: 'assets/icons/lounge.png' },
+    { id: '3', name: 'Fast-Food', icon: 'assets/icons/fastfood.png' },
+    { id: '4', name: 'Airline Agencies', icon: 'assets/icons/plane.png' },
+    { id: '5', name: 'Tech Stores', icon: 'assets/icons/console.png' }
   ];
 
   quickGames: Game[] = [

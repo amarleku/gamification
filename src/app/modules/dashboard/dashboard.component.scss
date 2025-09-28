@@ -141,16 +141,20 @@
 }
 
 .category-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: var(--radius-full);
-  border: 2px solid var(--primary-blue);
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-size-2xl);
   margin-bottom: var(--spacing-sm);
   background: var(--white);
+  overflow: hidden;
+  
+  img {
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
 }
 
 .category-name {
@@ -232,16 +236,17 @@
 
 .game-card {
   flex-shrink: 0;
-  width: 200px;
-  height: 120px;
-  border-radius: var(--radius-lg);
+  width: 150px;
+  height: 180px;
+  border-radius: var(--radius-xl);
   overflow: hidden;
   cursor: pointer;
   transition: all var(--transition-fast);
   position: relative;
+  box-shadow: var(--shadow-md);
   
   &:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
   }
 }
@@ -260,14 +265,17 @@
 
 .game-label {
   position: absolute;
-  bottom: var(--spacing-sm);
-  right: var(--spacing-sm);
+  bottom: var(--spacing-md);
+  left: var(--spacing-md);
+  right: var(--spacing-md);
   background: var(--primary-pink);
   color: var(--white);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--radius-full);
-  font-size: var(--font-size-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-sm);
   font-weight: 600;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
 }
 
 /* Banner Section */
@@ -526,8 +534,8 @@
   }
   
   .category-icon {
-    width: 45px;
-    height: 45px;
+    width: 100%;
+    height: 100%;
     font-size: var(--font-size-md);
   }
   
@@ -567,16 +575,33 @@
   }
   
   .category-icon {
-    width: 40px;
-    height: 40px;
-    font-size: var(--font-size-sm);
+    width: 80%;
+    height: 100%;
+    object-fit: fill;
+    
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
   
   .category-name {
     font-size: 10px;
   }
   
-  .game-card,
+  .game-card {
+    width: 100px;
+    height: 160px;
+  }
+  
+  .game-label {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    bottom: var(--spacing-sm);
+    left: var(--spacing-sm);
+    right: var(--spacing-sm);
+  }
+  
   .quiz-game-card {
     width: 140px;
   }
