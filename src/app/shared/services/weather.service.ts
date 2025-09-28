@@ -59,8 +59,9 @@ export class WeatherService {
       
       // Try to get weather data if API key is configured
       const API_KEY = '5b57b81e2bac01dceb1b04eb684f69d5'; // Replace with your actual API key
+      const isApiKeyConfigured = API_KEY && API_KEY.length > 10 && !API_KEY.includes('your_api_key');
       
-      if (API_KEY === '5b57b81e2bac01dceb1b04eb684f69d5') {
+      if (!isApiKeyConfigured) {
         // No API key configured, return location with mock temperature
         return {
           temperature: '22°C',
