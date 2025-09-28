@@ -59,7 +59,7 @@ export class DashboardComponent implements OnInit {
     { 
       id: '1', 
       title: 'Astrology', 
-      image: 'assets/images/astrology.svg',
+      image: 'assets/icons/astrology.png',
       price: '$2',
       rating: 5.0,
       isFavorite: true
@@ -67,7 +67,7 @@ export class DashboardComponent implements OnInit {
     { 
       id: '2', 
       title: 'Music', 
-      image: 'assets/images/music.svg',
+      image: 'assets/icons/music.png',
       price: '$2',
       rating: 5.0,
       isFavorite: true

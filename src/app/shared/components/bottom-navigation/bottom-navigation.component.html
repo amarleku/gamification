@@ -4,8 +4,8 @@
     *ngFor="let navItem of navItems" 
     class="nav-item"
     [class.active]="navItem.id === activeItem"
+    [attr.data-id]="navItem.id"
     (click)="onNavItemClick(navItem)">
-    <span class="nav-icon">{{ navItem.icon }}</span>
-    <span class="nav-label">{{ navItem.label }}</span>
+    <img [src]="navItem.icon" [alt]="navItem.label" class="nav-icon">
   </div>
 </div>

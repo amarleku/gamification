@@ -32,11 +32,11 @@ export class BottomNavigationComponent {
   @Output() navItemClick = new EventEmitter<string>();
 
   navItems: NavItem[] = [
-    { id: 'home', label: 'Home', icon: '🏠', route: '/dashboard' },
-    { id: 'gift', label: 'Gift', icon: '🎁', route: '/gift' },
-    { id: 'heart', label: 'Favorites', icon: '❤️', route: '/favorites' },
-    { id: 'list', label: 'List', icon: '📋', route: '/list' },
-    { id: 'headphones', label: 'Audio', icon: '🎧', route: '/audio' }
+    { id: 'home', label: 'Home', icon: 'assets/bottom-nav/home.png', route: '/dashboard' },
+    { id: 'gift', label: 'Gift', icon: 'assets/bottom-nav/gift.png', route: '/gift' },
+    { id: 'heart', label: 'Favorites', icon: 'assets/bottom-nav/heart.png', route: '/favorites' },
+    { id: 'list', label: 'List', icon: 'assets/bottom-nav/todo.png', route: '/list' },
+    { id: 'headphones', label: 'Support', icon: 'assets/bottom-nav/support.png', route: '/support' }
   ];
 
   constructor(private router: Router) {}
