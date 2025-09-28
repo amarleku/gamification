@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherService, WeatherData } from '../../shared/services/weather.service';
 
 interface Category {
   id: string;
@@ -30,6 +31,11 @@ interface Banner {
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  // Dynamic greeting and weather properties
+  currentGreeting = 'Good Morning';
+  currentTemperature = '--°C';
+  currentLocation = 'Loading...';
+  
   // Touch/swipe properties
   touchStartX = 0;
   touchEndX = 0;
@@ -112,9 +118,13 @@ export class DashboardComponent implements OnInit {
   currentBannerIndex = 0;
   totalBanners = 4;
 
-  constructor() { }
+  constructor(private weatherService: WeatherService) { }
 
   ngOnInit(): void {
+    // Initialize dynamic greeting and weather
+    this.updateGreeting();
+    this.loadWeatherData();
+    
     // Auto-rotate banners every 5 seconds
     setInterval(() => {
       this.nextBanner();
@@ -258,5 +268,33 @@ export class DashboardComponent implements OnInit {
 
   onGameControllerClick(): void {
     console.log('Game controller clicked');
+  }
+
+  // Dynamic greeting based on time of day
+  updateGreeting(): void {
+    const currentHour = new Date().getHours();
+    
+    if (currentHour >= 5 && currentHour < 12) {
+      this.currentGreeting = 'Good Morning';
+    } else if (currentHour >= 12 && currentHour < 17) {
+      this.currentGreeting = 'Good Afternoon';
+    } else if (currentHour >= 17 && currentHour < 21) {
+      this.currentGreeting = 'Good Evening';
+    } else {
+      this.currentGreeting = 'Good Night';
+    }
+  }
+
+  // Load weather data using the weather service
+  async loadWeatherData(): Promise<void> {
+    try {
+      const weatherData = await this.weatherService.getWeatherData();
+      this.currentTemperature = weatherData.temperature;
+      this.currentLocation = weatherData.location;
+    } catch (error) {
+      console.error('Error loading weather data:', error);
+      this.currentTemperature = '--°C';
+      this.currentLocation = 'Location unavailable';
+    }
   }
 }

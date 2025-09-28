@@ -11,6 +11,9 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { SocialLoginComponent } from './components/social-login/social-login.component';
 import { BottomNavigationComponent } from './components/bottom-navigation/bottom-navigation.component';
 
+// Services
+import { WeatherService } from './services/weather.service';
+
 @NgModule({
   declarations: [
     CustomButtonComponent,
@@ -25,6 +28,9 @@ import { BottomNavigationComponent } from './components/bottom-navigation/bottom
     FormsModule,
     ReactiveFormsModule,
     RouterModule
+  ],
+  providers: [
+    WeatherService
   ],
   exports: [
     CustomButtonComponent,

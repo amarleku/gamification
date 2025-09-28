@@ -29,8 +29,14 @@
 
     <!-- Greeting Section -->
     <div class="greeting-section">
-      <h1 class="greeting-title">Good Morning</h1>
-      <p class="greeting-subtitle">Rise And Shine! It's Gaming Time</p>
+      <div class="greeting-content">
+        <h1 class="greeting-title">{{ currentGreeting }}</h1>
+        <p class="greeting-subtitle">Rise And Shine! It's Gaming Time</p>
+      </div>
+      <div class="weather-info">
+        <div class="temperature">{{ currentTemperature }}</div>
+        <div class="location">{{ currentLocation }}</div>
+      </div>
     </div>
   </div>
 
@@ -57,7 +63,7 @@
         <h2 class="section-title">Best Quick Games</h2>
         <button class="view-all-btn" (click)="onViewAll('quick-games')">
           View All
-          <span class="arrow">→</span>
+          <img src="assets/arrows/next_arrowpng.png" alt="Arrow" class="arrow-icon" />
         </button>
       </div>
       
@@ -119,7 +125,7 @@
         <h2 class="section-title">Quiz Games</h2>
         <button class="view-all-btn" (click)="onViewAll('quiz-games')">
           View All
-          <span class="arrow">→</span>
+          <img src="assets/arrows/next_arrowpng.png" alt="Arrow" class="arrow-icon" />
         </button>
       </div>
       
