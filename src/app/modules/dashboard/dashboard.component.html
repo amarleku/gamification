@@ -34,7 +34,10 @@
         <p class="greeting-subtitle">Rise And Shine! It's Gaming Time</p>
       </div>
       <div class="weather-info">
-        <div class="temperature">{{ currentTemperature }}</div>
+        <div class="weather-main">
+          <span class="weather-icon">{{ currentWeatherIcon }}</span>
+          <span class="temperature">{{ currentTemperature }}</span>
+        </div>
         <div class="location">{{ currentLocation }}</div>
       </div>
     </div>

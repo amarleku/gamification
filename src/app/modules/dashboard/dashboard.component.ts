@@ -35,6 +35,8 @@ export class DashboardComponent implements OnInit {
   currentGreeting = 'Good Morning';
   currentTemperature = '--°C';
   currentLocation = 'Loading...';
+  currentWeatherIcon = '☀️';
+  currentWeatherDescription = 'Loading...';
   
   // Touch/swipe properties
   touchStartX = 0;
@@ -291,10 +293,14 @@ export class DashboardComponent implements OnInit {
       const weatherData = await this.weatherService.getWeatherData();
       this.currentTemperature = weatherData.temperature;
       this.currentLocation = weatherData.location;
+      this.currentWeatherIcon = weatherData.weatherIcon;
+      this.currentWeatherDescription = weatherData.weatherDescription;
     } catch (error) {
       console.error('Error loading weather data:', error);
       this.currentTemperature = '--°C';
       this.currentLocation = 'Location unavailable';
+      this.currentWeatherIcon = '☀️';
+      this.currentWeatherDescription = 'Unknown';
     }
   }
 }

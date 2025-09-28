@@ -33,7 +33,9 @@ export class WeatherService {
             console.error('Error getting location:', error);
             resolve({
               temperature: '--°C',
-              location: 'Location unavailable'
+              location: 'Location unavailable',
+              weatherIcon: '☀️',
+              weatherDescription: 'Unknown'
             });
           }
         );
@@ -41,7 +43,9 @@ export class WeatherService {
         console.error('Geolocation is not supported by this browser.');
         resolve({
           temperature: '--°C',
-          location: 'Location not supported'
+          location: 'Location not supported',
+          weatherIcon: '☀️',
+          weatherDescription: 'Unknown'
         });
       }
     });
@@ -60,7 +64,9 @@ export class WeatherService {
         // No API key configured, return location with mock temperature
         return {
           temperature: '22°C',
-          location: locationName
+          location: locationName,
+          weatherIcon: '☀️',
+          weatherDescription: 'Sunny'
         };
       }
       
@@ -69,9 +75,12 @@ export class WeatherService {
       const data = await response.json();
       
       if (data.main && data.main.temp) {
+        const weatherIcon = this.getWeatherIcon(data.weather[0].main, data.weather[0].description);
         return {
           temperature: `${Math.round(data.main.temp)}°C`,
-          location: data.name || locationName
+          location: data.name || locationName,
+          weatherIcon: weatherIcon,
+          weatherDescription: data.weather[0].description
         };
       } else {
         throw new Error('Weather data not available');
@@ -82,7 +91,9 @@ export class WeatherService {
       const locationName = await this.getLocationName(lat, lon);
       return {
         temperature: '22°C',
-        location: locationName
+        location: locationName,
+        weatherIcon: '☀️',
+        weatherDescription: 'Sunny'
       };
     }
   }
@@ -113,5 +124,26 @@ export class WeatherService {
       console.error('Error getting location name:', error);
       return 'Current Location';
     }
+  }
+
+  // Get weather icon based on weather condition
+  private getWeatherIcon(main: string, description: string): string {
+    const desc = description.toLowerCase();
+    
+    if (main === 'Clear') return '☀️';
+    if (main === 'Clouds') {
+      if (desc.includes('few') || desc.includes('scattered')) return '⛅';
+      return '☁️';
+    }
+    if (main === 'Rain') {
+      if (desc.includes('light') || desc.includes('drizzle')) return '🌦️';
+      return '🌧️';
+    }
+    if (main === 'Thunderstorm') return '⛈️';
+    if (main === 'Snow') return '❄️';
+    if (main === 'Mist' || main === 'Fog') return '🌫️';
+    if (main === 'Haze') return '🌫️';
+    
+    return '☀️'; // Default to sunny
   }
 }

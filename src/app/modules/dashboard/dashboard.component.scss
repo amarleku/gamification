@@ -132,20 +132,32 @@
   margin-left: var(--spacing-md);
 }
 
+.weather-main {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-xs);
+}
+
+.weather-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
 .temperature {
-  font-size: var(--font-size-2xl);
-  font-weight: 700;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
   color: var(--white);
-  margin: 0 0 var(--spacing-xs) 0;
+  margin: 0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .location {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   color: var(--white);
   margin: 0;
   opacity: 0.8;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 /* Main Content */
