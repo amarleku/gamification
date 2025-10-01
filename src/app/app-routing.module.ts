@@ -15,6 +15,8 @@ const routes: Routes = [
   
   { path: 'gift', loadChildren: () => import('./modules/gift/gift.module').then(m => m.GiftModule) },
   
+  { path: 'favorites', loadChildren: () => import('./modules/favorites/favorites.module').then(m => m.FavoritesModule) },
+  
   { path: '**', redirectTo: '/launch' }
 ];
 
