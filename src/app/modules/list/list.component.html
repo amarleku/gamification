@@ -1,0 +1,108 @@
+<div class="list-container">
+  <!-- Pink Header Section -->
+  <div class="header-section">
+    <div class="nav-bar">
+      <button class="nav-back" (click)="onBackClick()" [attr.aria-label]="'Go back'">
+        ←
+      </button>
+      <h1 class="nav-title">My Tasks</h1>
+      <div class="nav-spacer"></div>
+    </div>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="main-content">
+    <!-- Stats Section -->
+    <div class="stats-section">
+      <div class="stat-card">
+        <div class="stat-number">{{ getTotalPoints() }}</div>
+        <div class="stat-label">Points Earned</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">{{ completedTasks.length }}</div>
+        <div class="stat-label">Completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">{{ pendingTasks.length }}</div>
+        <div class="stat-label">Pending</div>
+      </div>
+    </div>
+
+    <!-- Pending Tasks -->
+    <div class="tasks-section" *ngIf="pendingTasks.length > 0">
+      <h2 class="section-title">Pending Tasks</h2>
+      <div class="tasks-list">
+        <div 
+          *ngFor="let task of pendingTasks; let i = index" 
+          class="task-card"
+          [style.animation-delay]="(i * 0.1) + 's'"
+          (click)="onTaskClick(task)">
+          
+          <div class="task-checkbox" (click)="onTaskToggle(task); $event.stopPropagation()">
+            <div class="checkbox" [class.checked]="task.completed">
+              <span *ngIf="task.completed">✓</span>
+            </div>
+          </div>
+          
+          <div class="task-content">
+            <div class="task-header">
+              <h3 class="task-title">{{ task.title }}</h3>
+              <div class="task-priority" [class]="getPriorityClass(task.priority)">
+                {{ task.priority }}
+              </div>
+            </div>
+            
+            <p *ngIf="task.description" class="task-description">{{ task.description }}</p>
+            
+            <div class="task-footer">
+              <div class="task-category">{{ task.category }}</div>
+              <div class="task-points">+{{ task.points }} pts</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Completed Tasks -->
+    <div class="tasks-section" *ngIf="completedTasks.length > 0">
+      <h2 class="section-title completed">Completed Tasks</h2>
+      <div class="tasks-list">
+        <div 
+          *ngFor="let task of completedTasks; let i = index" 
+          class="task-card completed"
+          [style.animation-delay]="(i * 0.1) + 's'"
+          (click)="onTaskClick(task)">
+          
+          <div class="task-checkbox" (click)="onTaskToggle(task); $event.stopPropagation()">
+            <div class="checkbox checked">
+              <span>✓</span>
+            </div>
+          </div>
+          
+          <div class="task-content">
+            <div class="task-header">
+              <h3 class="task-title">{{ task.title }}</h3>
+              <div class="task-priority completed">
+                {{ task.priority }}
+              </div>
+            </div>
+            
+            <p *ngIf="task.description" class="task-description">{{ task.description }}</p>
+            
+            <div class="task-footer">
+              <div class="task-category">{{ task.category }}</div>
+              <div class="task-points earned">+{{ task.points }} pts</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="tasks.length === 0">
+      <div class="empty-icon">📝</div>
+      <h3>No tasks yet</h3>
+      <p>Start completing tasks to earn points and rewards!</p>
+    </div>
+  </div>
+</div>

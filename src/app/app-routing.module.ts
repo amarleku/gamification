@@ -17,6 +17,10 @@ const routes: Routes = [
   
   { path: 'favorites', loadChildren: () => import('./modules/favorites/favorites.module').then(m => m.FavoritesModule) },
   
+  { path: 'list', loadChildren: () => import('./modules/list/list.module').then(m => m.ListModule) },
+  
+  { path: 'support', loadChildren: () => import('./modules/support/support.module').then(m => m.SupportModule) },
+  
   { path: '**', redirectTo: '/launch' }
 ];
 

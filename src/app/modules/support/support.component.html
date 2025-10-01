@@ -1,0 +1,78 @@
+<div class="support-container">
+    <!-- Pink Header Section -->
+    <div class="header-section">
+        <div class="nav-bar">
+            <button class="nav-back" (click)="onBackClick()" [attr.aria-label]="'Go back'">
+                ←
+            </button>
+            <h1 class="nav-title">Support</h1>
+            <div class="nav-spacer"></div>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Support Options Grid -->
+        <div class="support-section">
+            <h2 class="section-title">Get Help</h2>
+            <div class="support-grid">
+                <div *ngFor="let option of supportOptions; let i = index" class="support-card"
+                    [style.animation-delay]="(i * 0.1) + 's'" (click)="onSupportOptionClick(option)">
+
+                    <div class="support-icon">{{ option.icon }}</div>
+                    <h3 class="support-title">{{ option.title }}</h3>
+                    <p class="support-description">{{ option.description }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div *ngFor="let faq of faqs; let i = index" class="faq-card" [style.animation-delay]="(i * 0.1) + 's'"
+                    (click)="onFAQClick(faq)">
+
+                    <div class="faq-header">
+                        <h3 class="faq-question">{{ faq.question }}</h3>
+                        <div class="faq-category">{{ faq.category }}</div>
+                    </div>
+
+                    <div class="faq-answer">
+                        <p>{{ faq.answer }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-section">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="contact-card">
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <p>support@gamification.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <h4>Phone</h4>
+                        <p>+1 (234) 567-8900</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🕒</div>
+                    <div class="contact-details">
+                        <h4>Hours</h4>
+                        <p>Mon-Fri: 9AM-6PM EST</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
