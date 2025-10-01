@@ -13,6 +13,8 @@ const routes: Routes = [
   
   { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule) },
   
+  { path: 'gift', loadChildren: () => import('./modules/gift/gift.module').then(m => m.GiftModule) },
+  
   { path: '**', redirectTo: '/launch' }
 ];
 

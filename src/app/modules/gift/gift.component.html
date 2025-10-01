@@ -1,0 +1,75 @@
+<div class="gift-container">
+  <!-- Pink Header Section -->
+  <div class="header-section">
+    <div class="nav-bar">
+      <button 
+        class="nav-back"
+        (click)="onBackClick()"
+        [attr.aria-label]="'Go back'">
+        ←
+      </button>
+      <h1 class="nav-title">Best Offerts</h1>
+      <div class="nav-spacer"></div>
+    </div>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="main-content">
+    <!-- Introductory Text -->
+    <div class="intro-section">
+      <p class="intro-text">Discover our most popular offerts!</p>
+      <p class="intro-text-bold">Play to get them</p>
+    </div>
+
+    <!-- Offers Grid -->
+    <div class="offers-grid">
+      <div 
+        *ngFor="let offer of offers; let i = index" 
+        class="offer-card"
+        [style.animation-delay]="(i * 0.1) + 's'"
+        (click)="onOfferClick(offer)">
+        
+        <!-- Offer Image -->
+        <div class="offer-image">
+          <img [src]="offer.image" [alt]="offer.title" />
+          
+          <!-- Category Icon -->
+          <div class="category-icon">
+            <img [src]="offer.categoryIcon" [alt]="offer.categoryIcon" />
+          </div>
+          
+          <!-- Favorite Button -->
+          <button 
+            class="favorite-btn"
+            (click)="onFavoriteToggle(offer); $event.stopPropagation()"
+            [class.favorite]="offer.isFavorite">
+            ♡
+          </button>
+          
+          <!-- Price Tag -->
+          <div class="price-tag">
+            {{ offer.price }}
+          </div>
+        </div>
+        
+        <!-- Offer Details -->
+        <div class="offer-details">
+          <h3 class="offer-title">{{ offer.title }}</h3>
+          <p *ngIf="offer.description" class="offer-description">{{ offer.description }}</p>
+          
+          <!-- Rating and Reward -->
+          <div class="offer-footer">
+            <div class="rating">
+              <span class="rating-number">{{ offer.rating }}</span>
+              <span class="star">⭐</span>
+            </div>
+            <div class="reward-icon">
+              <span>🏠</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
